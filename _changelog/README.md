@@ -8,3 +8,5 @@ Gelukkig had ik gisteren al gezien dat we met Routing moesten gaan werken dus di
 
 ## ERD op dit moment
 [ERD](images/ERD.png)
+
+Ik ben nog niet helemaal tevreden met de ERD, ik wil nog wat dingen aanpassen. Maar dan wil ik meer zicht hebben op wat ik allemaal kan doen met Laravel.

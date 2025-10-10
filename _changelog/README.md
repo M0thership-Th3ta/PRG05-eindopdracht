@@ -23,6 +23,7 @@ Vandaag ben ik weer verder gegaan met het project. Ik moet even aankijken hoe de
 - Breeze toegevoegd aan het project, dit was ik vergeten tijdens de set-up
 - Om te oefenen met Routes, Views en Controllers heb ik een simpele contactpagina gemaakt
 - ProductController (genaamd VTuberController) aangemaakt
+- About Us pagina aangemaakt om te testen met het meegeven van data vanuit de router naar de view
 
 ## Userstories op dit moment
 [Userstories](images/UserStories.png)

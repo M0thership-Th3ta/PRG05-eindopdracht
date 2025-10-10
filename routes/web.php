@@ -14,6 +14,13 @@ Route::get('/dashboard', function () {
 
 Route::resource('vtubers', VTuberController::class);
 
+Route::get('/about-us', function() {
+    $company = 'Hogeschool Rotterdam';
+    return view('about-us', [
+        'company' => $company
+    ]);
+});
+
 Route::get('/contact', function () {
     return view('contact');
 });

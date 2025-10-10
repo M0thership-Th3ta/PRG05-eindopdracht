@@ -35,3 +35,9 @@ Vandaag ben ik weer verder gegaan met het project. Ik moet even aankijken hoe de
 ## Onderzochte bronnen
 - https://laravel.com/docs/12.x/controllers#resource-controllers
 - [Claude Chat](images/Claude.png)
+
+Ik streef ervoor om zo transparant mogelijk te zijn met mijn AI gebruik, ik laat AI namelijk ook nooit onderdelen zelf schrijven, en voeg ook alleen dingen toe die ik zelf ook kan uitleggen. De show pagina verschilt eigenlijk niet veel met de index functie, alleen geeft het nu een parameter door.
+
+## Planning voor dit weekend
+- Productenoverzicht met Dummy data
+- Verslag afschijven en inleveren

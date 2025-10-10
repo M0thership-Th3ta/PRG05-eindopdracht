@@ -35,7 +35,9 @@ class VTuberController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('vtubers.show', [
+            'id' => $id
+        ]);
     }
 
     /**

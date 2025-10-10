@@ -24,9 +24,14 @@ Vandaag ben ik weer verder gegaan met het project. Ik moet even aankijken hoe de
 - Om te oefenen met Routes, Views en Controllers heb ik een simpele contactpagina gemaakt
 - ProductController (genaamd VTuberController) aangemaakt
 - About Us pagina aangemaakt om te testen met het meegeven van data vanuit de router naar de view
+- Routing verder onderzocht met hulp van Claude en Documentatie, hierdoor heb ik de show functie in de controller uit kunnen werken.
 
 ## Userstories op dit moment
 [Userstories](images/UserStories.png)
 
 ## ERD op dit moment
 [ERD](images/ERD_2.png)
+
+## Onderzochte bronnen
+- https://laravel.com/docs/12.x/controllers#resource-controllers
+- [Claude Chat](images/Claude.png)

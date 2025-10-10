@@ -21,6 +21,8 @@ Vandaag ben ik weer verder gegaan met het project. Ik moet even aankijken hoe de
 - Userstories gemaakt en MoSCoW methode toegepast
 - ERD aangepast
 - Breeze toegevoegd aan het project, dit was ik vergeten tijdens de set-up
+- Om te oefenen met Routes, Views en Controllers heb ik een simpele contactpagina gemaakt
+- ProductController (genaamd VTuberController) aangemaakt
 
 ## Userstories op dit moment
 [Userstories](images/UserStories.png)

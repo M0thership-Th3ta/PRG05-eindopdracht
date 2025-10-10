@@ -20,6 +20,7 @@ Vandaag ben ik weer verder gegaan met het project. Ik moet even aankijken hoe de
 
 - Userstories gemaakt en MoSCoW methode toegepast
 - ERD aangepast
+- Breeze toegevoegd aan het project, dit was ik vergeten tijdens de set-up
 
 ## Userstories op dit moment
 [Userstories](images/UserStories.png)

@@ -41,3 +41,15 @@ Ik streef ervoor om zo transparant mogelijk te zijn met mijn AI gebruik, ik laat
 ## Planning voor dit weekend
 - Productenoverzicht met Dummy data
 - Verslag afschijven en inleveren
+
+# Zaterdag 11 October 2025
+Vandaag heb ik vooral gefocust op mijn verslag zodat ik het vandaag in kan leveren, om de druk daarachter te verlichten.
+Gelukkig heb ik op Dinsdag 7 October al mijn 3 frameworks getest aan de hand van de voorwaarden in de Toelichting, zoals de routes en controllers. Dus ik moest alleen nog mijn verslag afmaken.
+
+- Verslag afgemaakt
+
+# Zondag 12 October 2025
+Ik heb vandaag vrij genomen van het project.
+
+# Maandag 13 October 2025
+Ook vandaag heb ik vrij genomen van het project.

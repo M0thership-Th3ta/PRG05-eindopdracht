@@ -1,19 +1,14 @@
-# Woensdag 8 October 2025
-Ik was helaas ziek vandaag dus ik moest even kijken wat ik vandaag af kon krijgen.
-Gelukkig had ik gisteren al gezien dat we met Routing moesten gaan werken dus dit wist ik al wel. Heb ik ook al kunnen toevoegen aan de startprojecten van mijn verslag.
+# Maandag 13 October 2025
+Ook vandaag heb ik vrij genomen van het project.
 
-- Initial commit
-- README aangemaakt en toegevoegd aan _changelog directory
-- Onderzocht hoe de Changelog in werking zou gaan binnen dit project
-- ERD gemaakt.
+# Zondag 12 October 2025
+Ik heb vandaag vrij genomen van het project.
 
-## ERD op dit moment
-[ERD](images/ERD.png)
+# Zaterdag 11 October 2025
+Vandaag heb ik vooral gefocust op mijn verslag zodat ik het vandaag in kan leveren, om de druk daarachter te verlichten.
+Gelukkig heb ik op Dinsdag 7 October al mijn 3 frameworks getest aan de hand van de voorwaarden in de Toelichting, zoals de routes en controllers. Dus ik moest alleen nog mijn verslag afmaken.
 
-Ik ben nog niet helemaal tevreden met de ERD, ik wil nog wat dingen aanpassen. Maar dan wil ik meer zicht hebben op wat ik allemaal kan doen met Laravel.
-
-# Donderdag 9 October 2025
-Ik was vandaag te ziek om verder aan het project te werken, dus ik heb helaas niks kunnen doen.
+- Verslag afgemaakt
 
 # Vrijdag 10 October 2025
 Vandaag ben ik weer verder gegaan met het project. Ik moet even aankijken hoe de gemiste tijd effect heeft op mijn planning.
@@ -27,10 +22,10 @@ Vandaag ben ik weer verder gegaan met het project. Ik moet even aankijken hoe de
 - Routing verder onderzocht met hulp van Claude en Documentatie, hierdoor heb ik de show functie in de controller uit kunnen werken.
 
 ## Userstories op dit moment
-[Userstories](images/UserStories.png)
+![Userstories](images/UserStories.png)
 
 ## ERD op dit moment
-[ERD](images/ERD_2.png)
+![ERD](images/ERD_2.png)
 
 ## Onderzochte bronnen
 - https://laravel.com/docs/12.x/controllers#resource-controllers
@@ -42,14 +37,27 @@ Ik streef ervoor om zo transparant mogelijk te zijn met mijn AI gebruik, ik laat
 - Productenoverzicht met Dummy data
 - Verslag afschijven en inleveren
 
-# Zaterdag 11 October 2025
-Vandaag heb ik vooral gefocust op mijn verslag zodat ik het vandaag in kan leveren, om de druk daarachter te verlichten.
-Gelukkig heb ik op Dinsdag 7 October al mijn 3 frameworks getest aan de hand van de voorwaarden in de Toelichting, zoals de routes en controllers. Dus ik moest alleen nog mijn verslag afmaken.
+# Donderdag 9 October 2025
+Ik was vandaag te ziek om verder aan het project te werken, dus ik heb helaas niks kunnen doen.
 
-- Verslag afgemaakt
+# Woensdag 8 October 2025
+Ik was helaas ziek vandaag dus ik moest even kijken wat ik vandaag af kon krijgen.
+Gelukkig had ik gisteren al gezien dat we met Routing moesten gaan werken dus dit wist ik al wel. Heb ik ook al kunnen toevoegen aan de startprojecten van mijn verslag.
 
-# Zondag 12 October 2025
-Ik heb vandaag vrij genomen van het project.
+- Initial commit
+- README aangemaakt en toegevoegd aan _changelog directory
+- Onderzocht hoe de Changelog in werking zou gaan binnen dit project
+- ERD gemaakt.
 
-# Maandag 13 October 2025
-Ook vandaag heb ik vrij genomen van het project.
+## ERD op dit moment
+![ERD](images/ERD.png)
+
+Ik ben nog niet helemaal tevreden met de ERD, ik wil nog wat dingen aanpassen. Maar dan wil ik meer zicht hebben op wat ik allemaal kan doen met Laravel.
+
+
+
+
+
+
+
+

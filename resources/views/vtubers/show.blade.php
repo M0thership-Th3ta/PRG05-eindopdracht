@@ -1,2 +1,5 @@
-<h1>VTuber: {{ $id }}</h1>
-<p>This is the page for {{ $id }}</p>
+<x-app-layout>
+    <h1>VTuber: {{ $vtuber->name }}</h1>
+
+    <a href="{{ route('vtubers.index') }}">Back to VTubers List</a>
+</x-app-layout>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vtuber;
 use Illuminate\Http\Request;
 
 class VTuberController extends Controller
@@ -11,7 +12,8 @@ class VTuberController extends Controller
      */
     public function index()
     {
-        return view('vtubers.index');
+        $vtubers = Vtuber::all();
+        return view('vtubers.index', compact('vtubers'));
     }
 
     /**
@@ -33,10 +35,10 @@ class VTuberController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Vtuber $vtuber)
     {
         return view('vtubers.show', [
-            'id' => $id
+            'vtuber' => $vtuber
         ]);
     }
 

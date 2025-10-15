@@ -10,7 +10,7 @@ class Vtuber extends Model
         'name',
         'agency',
         'age',
-    ]
+    ];
 }
 
 

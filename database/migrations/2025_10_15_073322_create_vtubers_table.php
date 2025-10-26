@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('zodiac_sign', 64)->nullable();
             $table->string('fandom_name', 128)->nullable();
             $table->string('emoji', 64)->nullable();
-            $table->string('image_url', 256);
+            $table->string('image', 256);
             $table->date('birthday')->nullable();
             $table->date('debut_date');
             $table->string('youtube_channel_id', 128)->nullable();

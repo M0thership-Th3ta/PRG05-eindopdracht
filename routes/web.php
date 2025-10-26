@@ -9,7 +9,7 @@ Route::get('/', [IndexController::class, 'index'])
     ->name('home');
 Route::get('/contact', [IndexController::class, 'contact'])
     ->name('contact');
-Route::get('about-us/{id? }', [IndexController::class, 'aboutUs'])
+Route::get('about-us/{id?}', [IndexController::class, 'aboutUs'])
     ->name('about-us');
 
 Route::get('/dashboard', function () {

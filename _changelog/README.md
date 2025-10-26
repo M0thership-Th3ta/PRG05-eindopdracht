@@ -1,3 +1,15 @@
+# Zondag 26 October 2025
+Vandaag heb ik voor het eerst aan het project gewerkt sinds 17 October, ik heb taktisch vrij genomen van het project voor de herfstvakantie omdat ik aan mijn eigen mentale gezondheid kon merken dat ik wel duidelijk een pauze nodig had. Ik had dus wel redelijk wat in te halen, ik heb dus best wel veel tijd besteed vandaag aan het project. Mijn tijd-counter extensie binnen PHPStorm geeft nu 10 uur aan binnen het project.
+
+- Edit, Update en Delete functies toegevoegd aan de VTuberController.
+- Views aangemaakt voor Edit.
+- Create afgemaakt.
+- Show en Index pagina verbeterd.
+- Admin authenticatie toegevoegd voor het maken, editen en deleten van een VTuber.
+
+# Dinsdag 14 October 2025 tot Vrijdag 17 October 2025
+Ik heb veel werk gedaan aan het project tijdens de lessen en tijdens mijn peercoach tijd, ik weet niet meer helemaal precies wat er op deze dagen gedaan is, maar aan het einde van de week hoefde ik alleen nog de Edit, Update, en Delete te maken omdat ik al een begin had gemaakt aan de Create.
+
 # Maandag 13 October 2025
 Ook vandaag heb ik vrij genomen van het project.
 
@@ -8,7 +20,7 @@ Ik heb vandaag vrij genomen van het project.
 Vandaag heb ik vooral gefocust op mijn verslag zodat ik het vandaag in kan leveren, om de druk daarachter te verlichten.
 Gelukkig heb ik op Dinsdag 7 October al mijn 3 frameworks getest aan de hand van de voorwaarden in de Toelichting, zoals de routes en controllers. Dus ik moest alleen nog mijn verslag afmaken.
 
-- Verslag afgemaakt
+- Verslag afgemaakt en ingeleverd.
 
 # Vrijdag 10 October 2025
 Vandaag ben ik weer verder gegaan met het project. Ik moet even aankijken hoe de gemiste tijd effect heeft op mijn planning.

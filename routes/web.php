@@ -3,6 +3,7 @@
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VTuberController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index'])
@@ -14,7 +15,7 @@ Route::get('about-us/{id?}', [IndexController::class, 'aboutUs'])
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', AdminMiddleware::class])->name('dashboard');
 
 Route::resource('vtubers', VTuberController::class);
 

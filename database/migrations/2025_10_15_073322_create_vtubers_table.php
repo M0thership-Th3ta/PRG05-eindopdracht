@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('twitch_channel_id', 128)->nullable();
             $table->string('twitter_handle', 128)->nullable();
             $table->text('description');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

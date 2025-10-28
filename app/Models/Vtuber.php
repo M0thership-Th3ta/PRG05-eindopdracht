@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vtuber extends Model
 {
+    protected $hidden = [
+        'is_active'
+    ];
     protected $fillable = [
         'name',
         'agency',
@@ -26,6 +29,14 @@ class Vtuber extends Model
         'description',
         'image'
     ];
+
+    protected $casts = [
+        'is_active' => 'boolean'
+    ];
+
+    public function isActive(): bool {
+        return $this->is_active;
+    }
 }
 
 

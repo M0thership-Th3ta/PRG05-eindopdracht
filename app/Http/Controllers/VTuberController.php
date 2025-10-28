@@ -10,12 +10,23 @@ use Carbon\Carbon;
 
 class VTuberController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified', \App\Http\Middleware\AdminMiddleware::class])
+            ->only(['create', 'store', 'edit', 'update', 'destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $vtubers = Vtuber::all();
+        if (auth()->check() && auth()->user()->isAdmin()) {
+            $vtubers = Vtuber::all();
+        } else {
+            $vtubers = Vtuber::where('is_active', true)->get();
+        }
+
         return view('vtubers.index', compact('vtubers'));
     }
 
@@ -173,7 +184,7 @@ class VTuberController extends Controller
      */
     public function destroy(Vtuber $vtuber)
     {
-        if (!Auth::check() || !Auth::user()->is_admin) {
+        if (!Auth::check() || !Auth::user()->isAdmin()) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -189,5 +200,19 @@ class VTuberController extends Controller
         $vtuber->delete();
 
         return redirect()->route('vtubers.index');
+    }
+
+    public function toggleActive(Request $request, Vtuber $vtuber)
+    {
+        if (!auth()->check() || !auth()->user()->isAdmin()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $vtuber->is_active = ! $vtuber->is_active;
+        $vtuber->save();
+
+        $message = $vtuber->is_active() ? 'VTuber activated.' : 'VTuber deactivated.';
+
+        return redirect()->back()->with('success', $message);
     }
 }

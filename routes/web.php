@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VTuberController;
@@ -15,9 +16,46 @@ Route::get('about-us/{id?}', [IndexController::class, 'aboutUs'])
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', AdminMiddleware::class])->name('dashboard');
+})->middleware(['auth', 'admin'])->name('dashboard');
 
-Route::resource('vtubers', VTuberController::class);
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('vtubers/{vtuber}/edit', [VTuberController::class, 'edit'])
+        ->name('vtubers.edit');
+    Route::put('vtubers/{vtuber}', [VTuberController::class, 'update'])
+        ->name('vtubers.update');
+    Route::delete('vtubers/{vtuber}', [VTuberController::class, 'destroy'])
+        ->name('vtubers.destroy');
+    Route::get('vtubers/create', [VTuberController::class, 'create'])
+        ->name('vtubers.create');
+    Route::post('vtubers', [VTuberController::class, 'store'])
+        ->name('vtubers.store');
+
+    Route::get('vtubers', [VTuberController::class, 'index'])
+        ->name('vtubers.index')
+        ->withoutMiddleware(['auth', 'admin']);
+    Route::get('vtubers/{vtuber}', [VTuberController::class, 'show'])
+        ->name('vtubers.show')
+        ->withoutMiddleware(['auth', 'admin']);
+});
+
+Route::post('vtubers/{vtuber}/toggle-active', [VTuberController::class, 'toggleActive'])
+    ->name('vtubers.toggle-active')
+    ->middleware(['auth', 'admin']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('comments/create', [CommentController::class, 'create'])
+        ->name('comments.create');
+    Route::post('vtubers/{vtuber}', [CommentController::class, 'store'])
+        ->name('comments.store')
+        ->middleware(['auth', 'canComment']);
+
+    Route::get('comments/{comment}', [CommentController::class, 'show'])
+        ->name('comments.show')
+        ->withoutMiddleware(['auth']);
+    Route::get('comments', [CommentController::class, 'index'])
+        ->name('comments.index')
+        ->withoutMiddleware(['auth']);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

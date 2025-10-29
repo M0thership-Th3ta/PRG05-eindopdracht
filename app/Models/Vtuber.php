@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Vtuber extends Model
 {
@@ -36,6 +37,11 @@ class Vtuber extends Model
 
     public function isActive(): bool {
         return $this->is_active;
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
     }
 }
 

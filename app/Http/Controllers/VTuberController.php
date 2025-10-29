@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Vtuber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -10,12 +11,6 @@ use Carbon\Carbon;
 
 class VTuberController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth', 'verified', \App\Http\Middleware\AdminMiddleware::class])
-            ->only(['create', 'store', 'edit', 'update', 'destroy']);
-    }
-
     /**
      * Display a listing of the resource.
      */
@@ -211,7 +206,7 @@ class VTuberController extends Controller
         $vtuber->is_active = ! $vtuber->is_active;
         $vtuber->save();
 
-        $message = $vtuber->is_active() ? 'VTuber activated.' : 'VTuber deactivated.';
+        $message = $vtuber->is_active ? 'VTuber activated.' : 'VTuber deactivated.';
 
         return redirect()->back()->with('success', $message);
     }

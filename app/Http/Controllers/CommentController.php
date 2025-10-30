@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Vtuber;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -15,6 +14,7 @@ class CommentController extends Controller
     public function index()
     {
         $comments = Comment::with(['user', 'vtuber'])->latest()->get();
+
         return view('comments.index', compact('comments'));
     }
 
@@ -31,6 +31,13 @@ class CommentController extends Controller
      */
     public function store(Request $request, Vtuber $vtuber)
     {
+        $user = auth()->user();
+
+        if (! $user || (! $user->is_admin && ! $user->isAtLeastDaysOld(7))) {
+            return redirect()->route('vtubers.show', $vtuber)
+                ->with('comment_error', 'your account needs to be at least 7 days old to post comments');
+        }
+
         $request->validate([
             'content' => 'required|string'
         ]);
@@ -38,7 +45,7 @@ class CommentController extends Controller
         Comment::create([
             'content' => $request->input('content'),
             'vtuber_id' => $request->vtuber_id,
-            'user_id' => auth()->id(),
+            'user_id' => $user->id,
         ]);
 
         return redirect()->route('vtubers.show', $vtuber);
@@ -49,14 +56,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        $datePosted = $comment->created_at
-            ? Carbon::parse($comment->created_at)->format('F j, Y')
-            : null;
-
-        return view('comments.show', [
-            'comment' => $comment,
-            'datePosted' => $datePosted,
-        ]);
+        return view('comments.show', compact('comment'));
     }
 
     /**
@@ -64,7 +64,9 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        abort_if(! auth()->check() || auth()->user()->id !== $comment->user_id, 403);
+
+        return view('comments.edit', compact('comment'));
     }
 
     /**
@@ -72,7 +74,17 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        abort_if(! auth()->check() || auth()->user()->id !== $comment->user_id, 403);
+
+        $request->validate([
+            'content' => 'required|string'
+        ]);
+
+        $comment->update([
+            'content' => $request->input('content'),
+        ]);
+
+        return redirect()->route('vtubers.show', $comment->vtuber);
     }
 
     /**
@@ -80,6 +92,11 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        abort_if(! auth()->check() || (auth()->id() !== $comment->user_id && ! auth()->user()->is_admin), 403);
+
+        $vtuber = $comment->vtuber;
+        $comment->delete();
+
+        return redirect()->route('vtubers.show', $vtuber);
     }
 }

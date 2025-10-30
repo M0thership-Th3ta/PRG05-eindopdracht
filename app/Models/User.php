@@ -46,7 +46,23 @@ class User extends Authenticatable
         'is_admin' => 'boolean',
     ];
 
+    /**
+     * Returns the state of the admin flag in the database.
+     */
+
     public function isAdmin(): bool {
         return $this->is_admin;
+    }
+
+    /**
+     * Return true if the account is at least N days old.
+     */
+    public function isAtLeastDaysOld(int $days = 0): bool
+    {
+        if (! $this->created_at) {
+            return false;
+        }
+
+        return $this->created_at->lte(now()->subDays($days));
     }
 }

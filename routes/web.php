@@ -42,19 +42,20 @@ Route::post('vtubers/{vtuber}/toggle-active', [VTuberController::class, 'toggleA
     ->name('vtubers.toggle-active')
     ->middleware(['auth', 'admin']);
 
+Route::get('comments/{comment}', [CommentController::class, 'show'])
+    ->name('comments.show');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('comments/create', [CommentController::class, 'create'])
         ->name('comments.create');
-    Route::post('vtubers/{vtuber}', [CommentController::class, 'store'])
-        ->name('comments.store')
-        ->middleware(['auth', 'canComment']);
-
-    Route::get('comments/{comment}', [CommentController::class, 'show'])
-        ->name('comments.show')
-        ->withoutMiddleware(['auth']);
-    Route::get('comments', [CommentController::class, 'index'])
-        ->name('comments.index')
-        ->withoutMiddleware(['auth']);
+    Route::post('vtubers/{vtuber}/comments', [CommentController::class, 'store'])
+        ->name('comments.store');
+    Route::get('comments/{comment}/edit', [CommentController::class, 'edit'])
+        ->name('comments.edit');
+    Route::put('comments/{comment}', [CommentController::class, 'update'])
+        ->name('comments.update');
+    Route::delete('comments/{comment}', [CommentController::class, 'destroy'])
+        ->name('comments.destroy');
 });
 
 Route::middleware('auth')->group(function () {

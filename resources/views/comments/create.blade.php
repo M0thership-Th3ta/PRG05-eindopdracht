@@ -6,21 +6,33 @@
     @endif
 
     @if(auth()->check())
-        <input type="hidden" name="vtuber_id" value="{{ $vtuber->id ?? '' }}">
+        @php
+            $user = auth()->user();
+            $isOldEnough = $user->is_admin || $user->isAtLeastDaysOld(7);
+            $flashError = session('comment_error');
+        @endphp
 
-        <div class="mb-3">
-            <label for="content" class="block text-sm font-medium text-gray-700 mb-1">Add a comment</label>
-            <textarea id="content" name="content" rows="4" required
-                      class="w-full border border-gray-300 rounded p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('content') }}</textarea>
-            @error('content')
-            <p class="text-xs text-red-600 mt-1">{{ $message }}</p>
-            @enderror
-        </div>
+        @if($flashError)
+            <p class="text-sm text-gray-600">{{ $flashError }}</p>
+        @elseif(! $isOldEnough)
+            <p class="text-sm text-gray-600">Your account needs to be at least 7 days old to post comments</p>
+        @else
+            <input type="hidden" name="vtuber_id" value="{{ $vtuber->id ?? '' }}">
 
-        <div class="flex items-center justify-between">
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">Post comment</button>
-            <p class="text-xs text-gray-500">Be respectful.</p>
-        </div>
+            <div class="mb-3">
+                <label for="content" class="block text-sm font-medium text-gray-700 mb-1">Add a comment</label>
+                <textarea id="content" name="content" rows="4" required
+                          class="w-full border border-gray-300 rounded p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('content') }}</textarea>
+                @error('content')
+                <p class="text-xs text-red-600 mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="flex items-center justify-between">
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">Post comment</button>
+                <p class="text-xs text-gray-500">Be respectful.</p>
+            </div>
+        @endif
     @else
         <p class="text-sm">
             <a href="{{ route('login') }}" class="text-blue-600 hover:underline">Log in</a> to post a comment.

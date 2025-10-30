@@ -49,41 +49,7 @@
 
                 <a href="{{ route('vtubers.index') }}" class="text-sm text-blue-600 hover:underline inline-block mb-6">Back to VTubers List</a>
 
-                <div class="mt-6">
-                    @include('comments.create', ['vtuber' => $vtuber])
-
-                    <div class="mt-6">
-                        <h2 class="text-lg font-medium mb-3">Comments</h2>
-
-                        @php
-                            $comments = $vtuber->comments()->with('user')->latest()->get();
-                        @endphp
-
-                        @if($comments->count())
-                            <ul class="space-y-4">
-                                @foreach($comments as $comment)
-                                    <li class="bg-white p-4 rounded shadow">
-                                        <div class="flex items-start gap-3">
-                                            <div class="flex-1">
-                                                <div class="text-sm font-semibold">
-                                                    {{ $comment->user->name ?? 'Unknown' }}
-                                                    <span class="text-xs text-gray-500"> · {{ $comment->created_at->diffForHumans() }}</span>
-                                                </div>
-                                                <p class="mt-1 text-sm">{{ $comment->content }}</p>
-
-                                                @if(!empty($comment->image))
-                                                    <img src="{{ asset('storage/'.$comment->image) }}" alt="comment image" class="mt-2 w-48 h-auto object-cover rounded">
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @else
-                            <p class="text-sm text-gray-600">No comments yet.</p>
-                        @endif
-                    </div>
-                </div>
+                @include('comments.index', ['vtuber' => $vtuber])
             </main>
 
             <aside class="w-full md:w-80 flex-shrink-0 md:self-start">

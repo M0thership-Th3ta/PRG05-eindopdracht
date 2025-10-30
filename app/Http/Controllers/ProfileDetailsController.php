@@ -28,7 +28,11 @@ class ProfileDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'location' => 'nullable|string|max:128',
+            'image' => 'nullable|image|max:2048',
+            'birthday' => 'nullable|date',
+        ]);
     }
 
     /**

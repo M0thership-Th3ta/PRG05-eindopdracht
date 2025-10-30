@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ProfileDetail;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,17 +17,19 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
+        $admin = User::factory()->create([
             'name' => 'VtuberCommunityNL',
             'email' => 'amberdekoster03@gmail.com',
             'password' => Hash::make('Amf@Ht1s'),
             'is_admin' => 1
         ]);
-        User::factory()->create([
+        $member = User::factory()->create([
             'name' => 'Anemoia',
             'email' => 'killboy1100@gmail.com',
             'password' => Hash::make('Amf@Ht1s'),
             'is_admin' => 0
         ]);
+        ProfileDetail::create(['user_id' => $admin->id]);
+        ProfileDetail::create(['user_id' => $member->id]);
     }
 }

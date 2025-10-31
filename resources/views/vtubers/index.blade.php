@@ -3,10 +3,27 @@
         <div class="flex items-center justify-between mb-4">
             <h1 class="text-2xl font-semibold">VTubers</h1>
 
-            @if(auth()->check() && auth()->user()->isAdmin())
-                <p><a href="{{ route('vtubers.create') }}">Add New VTuber</a></p>
-            @endif
+            <div class="flex items-center space-x-4">
+                <form method="GET" action="{{ route('vtubers.index') }}" class="flex items-center">
+                    <select name="agency" class="border rounded-md px-3 py-1 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                        <option value="">{{ __('All agencies') }}</option>
+                        @foreach($agencies as $agency)
+                            <option value="{{ $agency }}" {{ (string)($selectedAgency ?? request('agency')) === (string)$agency ? 'selected' : '' }}>
+                                {{ $agency }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                    <input type="text" name="query" value="{{ $search ?? request('query') }}" placeholder="Search VTubers..." class="border rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                    <button type="submit" class="ml-2 px-3 py-1 bg-gray-200 rounded-md hover:bg-gray-300">Search</button>
+                </form>
+
+                @if(auth()->check() && auth()->user()->isAdmin())
+                    <p><a href="{{ route('vtubers.create') }}" class="px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700">Add New VTuber</a></p>
+                @endif
+            </div>
         </div>
+
         @if($vtubers->count() > 0)
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 @foreach($vtubers as $vtuber)
@@ -49,3 +66,4 @@
         @endif
     </div>
 </x-app-layout>
+

@@ -16,13 +16,35 @@ class VTuberController extends Controller
      */
     public function index()
     {
-        if (auth()->check() && auth()->user()->isAdmin()) {
-            $vtubers = Vtuber::all();
-        } else {
-            $vtubers = Vtuber::where('is_active', true)->get();
+        $search = request()->query('query');
+        $selectedAgency = request()->query('agency');
+
+        $query = Vtuber::query();
+
+        if (!auth()->check() || !auth()->user()->isAdmin()) {
+            $query->where('is_active', true);
         }
 
-        return view('vtubers.index', compact('vtubers'));
+        if (!empty($selectedAgency)) {
+            $query->where('agency', $selectedAgency);
+        }
+
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('agency', 'like', '%' . $search . '%');
+            });
+        }
+
+        $vtubers = $query->get();
+
+        $agencies = Vtuber::whereNotNull('agency')
+            ->where('agency', '<>', '')
+            ->distinct()
+            ->orderBy('agency')
+            ->pluck('agency');
+
+        return view('vtubers.index', compact('vtubers','agencies', 'selectedAgency', 'search'));
     }
 
     /**

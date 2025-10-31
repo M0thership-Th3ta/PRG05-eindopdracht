@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\ProfileDetail;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,10 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         $admin = User::factory()->create([
-            'name' => 'VtuberCommunityNL',
+            'name' => 'VtuberCommunity',
             'email' => 'amberdekoster03@gmail.com',
             'password' => Hash::make('Amf@Ht1s'),
             'is_admin' => 1

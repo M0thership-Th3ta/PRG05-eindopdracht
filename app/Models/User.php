@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-// use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -52,6 +51,14 @@ class User extends Authenticatable
 
     public function isAdmin(): bool {
         return $this->is_admin;
+    }
+
+    /**
+     * One-to-one relation to profile_details.
+     */
+    public function profileDetail(): HasOne
+    {
+        return $this->hasOne(ProfileDetail::class);
     }
 
     /**

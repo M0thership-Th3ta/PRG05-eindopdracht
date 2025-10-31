@@ -18,8 +18,17 @@
                             <h1 class="text-2xl font-semibold text-gray-900">
                                 {{ $user->name ?? 'Guest' }}
                             </h1>
-                            @if($user && $user->email)
-                                <p class="text-sm text-gray-500">{{ $user->email }}</p>
+
+                            @php
+                                $pronounNames = [];
+                                if ($user && $user->profileDetail && $user->profileDetail->pronouns) {
+                                    $pronounNames = $user->profileDetail->pronouns->pluck('name')->filter()->all();
+                                }
+                                $pronounString = count($pronounNames) ? implode(' - ', $pronounNames) : null;
+                            @endphp
+
+                            @if($pronounString)
+                                <p class="text-sm text-gray-500">{{ $pronounString }}</p>
                             @endif
                         </div>
                     </div>

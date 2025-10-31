@@ -38,6 +38,17 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
+        $request->validate([
+            'pronouns' => ['nullable', 'array'],
+            'pronouns.*' => ['integer', 'exists:pronouns,id'],
+        ]);
+
+        $profile = $request->user()->profileDetail;
+        if (! $profile) {
+            $profile = $request->user()->profileDetail()->create([]);
+        }
+        $profile->pronouns()->sync($request->input('pronouns', []));
+
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 

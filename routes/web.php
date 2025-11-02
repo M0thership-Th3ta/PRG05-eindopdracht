@@ -3,8 +3,10 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\VTuberController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Models\Report;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index'])
@@ -15,7 +17,8 @@ Route::get('about-us/{id?}', [IndexController::class, 'aboutUs'])
     ->name('about-us');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $reports = Report::with('user')->latest()->get();
+    return view('dashboard', compact('reports'));
 })->middleware(['auth', 'admin'])->name('dashboard');
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -56,6 +59,20 @@ Route::middleware(['auth'])->group(function () {
         ->name('comments.update');
     Route::delete('comments/{comment}', [CommentController::class, 'destroy'])
         ->name('comments.destroy');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::delete('reports/{report}', [ReportController::class, 'destroy'])
+        ->name('reports.destroy');
+    Route::get('reports/{report}', [ReportController::class, 'show'])
+        ->name('reports.show');
+
+    Route::get('reports/create', [ReportController::class, 'create'])
+        ->name('reports.create')
+        ->withoutMiddleware(['admin']);
+    Route::post('reports', [ReportController::class, 'store'])
+        ->name('reports.store')
+        ->withoutMiddleware(['admin']);
 });
 
 Route::middleware('auth')->group(function () {

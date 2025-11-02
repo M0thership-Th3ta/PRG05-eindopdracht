@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ReportController extends Controller
 {
@@ -20,7 +23,7 @@ class ReportController extends Controller
      */
     public function create()
     {
-        //
+        return view('reports.create');
     }
 
     /**
@@ -28,7 +31,20 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:256',
+            'type' => 'required|string|max:64',
+            'content' => 'required|string|max:2048',
+        ]);
+
+        Report::create([
+            'user_id' => auth()->id(),
+            'title' => $request->input('title'),
+            'type' => $request->input('type'),
+            'content' => $request->input('content'),
+        ]);
+
+        return redirect()->route('contact');
     }
 
     /**
@@ -36,7 +52,14 @@ class ReportController extends Controller
      */
     public function show(Report $report)
     {
-        //
+        $dayReported = $report->created_at
+            ? Carbon::parse($report->created_at)->format('F j, Y')
+            : null;
+
+        return view('reports.show', [
+            'report' => $report,
+            'dayReported' => $dayReported,
+        ]);
     }
 
     /**
@@ -60,6 +83,12 @@ class ReportController extends Controller
      */
     public function destroy(Report $report)
     {
-        //
+        if (!Auth::check() || !Auth::user()->isAdmin()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $report->delete();
+
+        return redirect()->route('dashboard');
     }
 }

@@ -1,3 +1,12 @@
+# Zondag 2 November 2025
+Ik heb vandaag de website zo ver mogelijk afgemaakt en verder ingelevert. Er mist nog wel wat functionaliteit, maar ik heb niet meer genoeg tijd om dit af te krijgen. Ik heb dus besloten om het zo in te leveren.
+
+- Mist nog mooiere styling
+- Mist Blogpost functionaliteit
+- Mist Favorite VTuber functionaliteit
+- Mist profile zoeken en volgen functionaliteit
+- Mist evenementen functionaliteit
+
 # Zondag 26 October 2025
 Vandaag heb ik voor het eerst aan het project gewerkt sinds 17 October, ik heb taktisch vrij genomen van het project voor de herfstvakantie omdat ik aan mijn eigen mentale gezondheid kon merken dat ik wel duidelijk een pauze nodig had. Ik had dus wel redelijk wat in te halen, ik heb dus best wel veel tijd besteed vandaag aan het project. Mijn tijd-counter extensie binnen PHPStorm geeft nu 10 uur aan binnen het project.
 

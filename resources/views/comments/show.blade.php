@@ -4,7 +4,13 @@
             <div class="flex items-center justify-between">
                 <div class="flex-1 min-w-0">
                     <div class="text-sm font-semibold truncate">
-                        {{ $comment->user->name ?? 'Unknown' }}
+                        @if($comment->user)
+                            <a href="{{ route('profile.show', $comment->user) }}" class="text-blue-600 hover:underline">
+                                {{ $comment->user->name }}
+                            </a>
+                        @else
+                            Unknown
+                        @endif
                         <span class="text-xs text-gray-500"> · {{ $datePosted ?? $comment->created_at->diffForHumans() }}</span>
                     </div>
                 </div>

@@ -1,4 +1,6 @@
-@php $user = auth()->user(); @endphp
+@php
+    $user = $user ?? auth()->user();
+@endphp
 
 <x-app-layout>
     <x-slot name="header">
@@ -31,13 +33,6 @@
                                 <p class="text-sm text-gray-500">{{ $pronounString }}</p>
                             @endif
                         </div>
-                    </div>
-
-                    <div class="absolute right-0">
-                        <a href="{{ route('profile.edit') }}"
-                           class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none">
-                            Edit Profile
-                        </a>
                     </div>
                 </div>
             </div>
